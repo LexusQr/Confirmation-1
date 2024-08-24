@@ -153,12 +153,15 @@
             })
             .then(result => {
                 alert('Ваши данные успешно сохранены!');
+                // Обнуление значений формы
+                document.getElementById('name').value = '';
+                document.getElementById('patronymic').value = '';
+                document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => checkbox.checked = false);
             })
             .catch(error => {
                 console.error('Error:', error);
                 alert('Произошла ошибка при сохранении данных.');
             });
-
         }
     </script>
 </body>
