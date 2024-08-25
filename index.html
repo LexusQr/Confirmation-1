@@ -130,7 +130,7 @@
 
         <div class="input-group">
             <label for="whatsapp">Оставьте номер телефона WhatsApp для получения QR кода для друга:</label>
-            <input type="tel" id="whatsapp" name="whatsapp" placeholder="+7 (___) ___-__-__" >
+            <input type="tel" id="whatsapp" name="whatsapp" placeholder="+7 () ___--_" required>
         </div>
 
         <p>*Вход на мероприятие строго по пригласительным и по QR кодам</p>
@@ -139,11 +139,11 @@
     </div>
     <script>
         function submitForm() {
-            const name = document.getElementById('name').value.trim();
-            const patronymic = document.getElementById('patronymic').value.trim();
+            const name = document.getElementById('name').value;
+            const patronymic = document.getElementById('patronymic').value;
             const participation = document.querySelector('input[name="participation"]:checked')?.value || 'Нет ответа';
             const withFriend = document.querySelector('input[name="with_friend"]:checked')?.value || 'Нет ответа';
-            const whatsapp = document.getElementById('whatsapp').value.trim();
+            const whatsapp = document.getElementById('whatsapp').value;
 
             const data = {
                 name: name,
@@ -158,9 +158,9 @@
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(data)
+                body: JSON.stringify(data),
+                mode: 'no-cors'
             })
-            .then(response => response.json())
             .then(result => {
                 alert('Ваши данные успешно сохранены!');
                 // Обнуление значений формы
